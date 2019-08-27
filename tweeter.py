@@ -17,5 +17,5 @@ class Tweeter:
     def tweet(self,txt):
         self.api.update_status(txt)
 
-tw = Tweeter("credentials.txt")
-tw.tweet("I want to help you understand and predict the world!")
+#tw = Tweeter("credentials.txt")
+#tw.tweet("I want to help you understand and predict the world!")
