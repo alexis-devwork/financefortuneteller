@@ -15,8 +15,8 @@ class Reading:
 
     def build_reading(self):
         reading = [self.querent_name+" Tarot"]
-        reading.append("You See: "+self.card_text(self.seen_card))
-        reading.append("You've Missed: "+self.card_text(self.unseen_card))
+        reading.append("Seen: "+self.card_text(self.seen_card))
+        reading.append("Overlooked: "+self.card_text(self.unseen_card))
         reading = '\n'.join(reading)
         reading = reading + self.build_hashtags(reading)
         return reading

@@ -12,6 +12,7 @@ class Card:
             self.card = self.card + " Reversed"
         self.text = db.get_meaning(self.card_id,reversed)[0][0]
         self.emo_dict = {'of':'',
+            'of ':'of',
             'Ace':'\U0001F170'.encode('utf-8').decode('utf-8'),
             'Two':'\U00000032\U000020E3'.encode('utf-8').decode('utf-8'),
             'Three':'\U00000033\U000020E3'.encode('utf-8').decode('utf-8'),
@@ -50,8 +51,11 @@ class Card:
         emojified = False
         for word in words:
             if word in self.emo_dict:
-                if word != "of":
-                    emojified = True
+                if not emojified:
+                    if word == "of":
+                        word = "of "
+                    else:
+                        emojified = True
                 replace.append(self.emo_dict[word])
             else:
                 replace.append(word)
