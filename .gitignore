@@ -3,3 +3,7 @@ bot/
 credentials.txt
 initialize
 initialize/
+__pycache__
+__pycache__/
+test
+test/
