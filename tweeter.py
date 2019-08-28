@@ -19,3 +19,6 @@ class Tweeter:
 
 #tw = Tweeter("credentials.txt")
 #tw.tweet("I want to help you understand and predict the world!")
+#tw.tweet(" " + '\ud83e\udde9'.encode('utf-16', 'surrogatepass').decode('utf-16'))
+#tw.tweet("Hi "+'\U0001f604'.encode('utf-8').decode('utf-8'))
+#tw.tweet("Hi "+'\U0001F504'.encode('utf-8').decode('utf-8')+" Reversed")
