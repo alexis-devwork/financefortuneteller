@@ -9,15 +9,15 @@ class TarotDB:
 
     def get_card(self,card_id):
         self.cur.execute("SELECT card FROM cards WHERE ID=?",(card_id,))
-        return self.cur.fetchone()
+        return self.cur.fetchone()[0]
 
     def get_card_short(self,card_id):
         self.cur.execute("SELECT abbrev FROM cards WHERE ID=?",(card_id,))
-        return self.cur.fetchone()
+        return self.cur.fetchone()[0]
 
     def get_meaning(self,card_id,reversed):
         self.cur.execute("SELECT meaning FROM meanings WHERE cardid=? AND reversed=?",(card_id,reversed))
-        return self.cur.fetchall()
+        return self.cur.fetchone()[0]
 
     def close_con(self):
         self.con.close()

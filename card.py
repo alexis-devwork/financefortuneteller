@@ -1,16 +1,15 @@
-from tarotdb import TarotDB
 
 class Card:
 
     def __init__(self,db,card_id,reversed,disable_emoji=False):
         self.card_id = card_id
         self.db = db
-        self.card = self.db.get_card(self.card_id)[0]
+        self.card = self.db.get_card(self.card_id)
         self.reversed = reversed
         self.disable_emoji = disable_emoji
         if self.reversed:
             self.card = self.card + " Reversed"
-        self.text = db.get_meaning(self.card_id,reversed)[0][0]
+        self.text = db.get_meaning(self.card_id,reversed)
         self.emo_dict = {'of':'',
             'of ':'of',
             'Ace':'\U0001F1E6\U0000FE0F'.encode('utf-8').decode('utf-8'),
@@ -27,15 +26,13 @@ class Card:
             'Knight':'\U0001F1F0\U0000FE0F'.encode('utf-8').decode('utf-8'),
             'Queen':'\U0001F1F6\U0001F451'.encode('utf-8').decode('utf-8'),
             'King':'\U0001F1F0\U0001F451'.encode('utf-8').decode('utf-8'),
-            'Reversed':'\U0001F504'.encode('utf-8').decode('utf-8'),
+            'Reversed ':'\U0001F504'.encode('utf-8').decode('utf-8'),
             'Pentacles':'\U0001F1F5'.encode('utf-8').decode('utf-8'),
             'Wands':'\U0001F1FC'.encode('utf-8').decode('utf-8'),
             'Swords':'\U0001F1F8'.encode('utf-8').decode('utf-8'),
             'Cups':'\U0001F1E8'.encode('utf-8').decode('utf-8')
         }
         self.emoji_card = self.emojify(self.card)
-
-
 
     def get_name(self):
         if self.disable_emoji:
@@ -52,8 +49,8 @@ class Card:
         for word in words:
             if word in self.emo_dict:
                 if not emojified:
-                    if word == "of":
-                        word = "of "
+                    if word == "of" or word == "The" or word=="Reversed":
+                        word = word + " "
                     else:
                         emojified = True
                 replace.append(self.emo_dict[word])
