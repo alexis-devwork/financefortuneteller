@@ -10,18 +10,26 @@ class Reading:
         self.seen, self.unseen = random.sample(range(1, 79), 2)
         self.seen_card = Card(self.db,self.seen,random.randrange(2),self.disable_emoji)
         self.unseen_card = Card(self.db,self.unseen,random.randrange(2),self.disable_emoji)
+        self.TWITTER_MAX = 280
         self.reading = self.build_reading()
 
     def build_reading(self):
         reading = [self.querent_name+" Tarot"]
         reading.append("KNOWN: "+self.card_text(self.seen_card))
         reading.append("OVERLOOKED: "+self.card_text(self.unseen_card))
+        chars = sum([len(x) for x in reading])+len(reading)
+        tags = self.build_hashtags(chars)
+        chars += sum([len(x) for x in tags])+len(tags)
+        if self.TWITTER_MAX - chars >= 2:
+            crystal_ball = '\U0001F52E'.encode('utf-8').decode('utf-8')
+            reading[0] = crystal_ball + reading[0] + crystal_ball
+        tags = ' '.join(tags)
+        reading.append(tags)
         reading = '\n'.join(reading)
-        reading = reading + self.build_hashtags(reading)
         return reading
 
-    def build_hashtags(self,reading):
-        leeway = 280-len(reading)-1
+    def build_hashtags(self,chars):
+        leeway = self.TWITTER_MAX-chars-1
         hashtags = ["$"+self.querent_name,"#"+self.querent_name]
         tags = []
         while leeway > 2 and hashtags:
@@ -30,7 +38,7 @@ class Reading:
             if leeway-length>0:
                 tags.append(tag)
                 leeway-=length
-        return '\n'+' '.join(tags)
+        return tags
 
     def card_text(self,card):
         return card.get_name() + ": " + card.get_detail()
