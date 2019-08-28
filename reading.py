@@ -11,7 +11,7 @@ class Reading:
 
     def build_reading(self):
         reading = [self.querent_name]
-        reading.append("Seen Factors: "+self.card_text(self.seen))
+        reading.append("Known Factors: "+self.card_text(self.seen))
         reading.append("Hidden Factors: "+self.card_text(self.unseen))
         reading = '\n'.join(reading)
         reading = reading + self.build_hashtags(reading)
