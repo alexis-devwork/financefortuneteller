@@ -6,7 +6,7 @@ import time
 
 db = TarotDB("diviner.db")
 reading = Reading(db,"NYSE")
-tweet = reading.reading
+tweet = reading.get_reading()
 tw = Tweeter("credentials.txt")
 tw.tweet(tweet)
 db.close_con()

@@ -1,6 +1,5 @@
 from card import Card
 import random
-from tarotdb import TarotDB
 
 class Reading:
 
@@ -35,6 +34,9 @@ class Reading:
 
     def card_text(self,card):
         return card.get_name() + ": " + card.get_detail()
+
+    def get_reading(self):
+        return self.reading
 
 # db = TarotDB("diviner.db")
 # x = Reading(db,"NYSE",disable_emoji=True)
