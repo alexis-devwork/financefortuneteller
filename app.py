@@ -12,27 +12,24 @@ tw.tweet(tweet)
 db.close_con()
 
 # faces = ['Ace',
-#     'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'#,
-#     #'Page','Knight','Queen','King'
+#     'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+#     'Page','Knight','Queen','King'
 #     ]
 # suits = ['Swords','Cups','Wands','Pentacles']
 #
 #
-#
+# tw = Tweeter("credentials.txt")
 # db = TarotDB("diviner.db")
 # fool = Card(db,1,0)
-# strings = []
-# for face in faces:
-#     for suit in suits:
-#         strings.append(fool.emojify(face + " of " + suit+ " Reversed"))
-# tweet = ', '.join(strings)
-#
-#
-# tw = Tweeter("credentials.txt")
-# posn = 0
-# # tw.tweet(fool.emojify("Two of Pentacles"))
-# while posn<len(tweet):
-#     tw.tweet(tweet[posn:posn+150])
-#     posn+=150
-#     time.sleep(5)
+# for suit in suits:
+#     strings = []
+#     for face in faces:
+#         strings.append(fool.emojify(face+" of "+suit))
+#     tweet = ', '.join(strings)
+#     posn = 0
+#     # tw.tweet(fool.emojify("Two of Pentacles"))
+#     while posn<len(tweet):
+#         tw.tweet(tweet[posn:posn+150])
+#         posn+=150
+#         time.sleep(5)
 # db.close_con()

@@ -13,7 +13,7 @@ class Card:
         self.text = db.get_meaning(self.card_id,reversed)[0][0]
         self.emo_dict = {'of':'',
             'of ':'of',
-            'Ace':'\U0001F170'.encode('utf-8').decode('utf-8'),
+            'Ace':'\U0001F1E6\U0000FE0F'.encode('utf-8').decode('utf-8'),
             'Two':'\U00000032\U000020E3'.encode('utf-8').decode('utf-8'),
             'Three':'\U00000033\U000020E3'.encode('utf-8').decode('utf-8'),
             'Four':'\U00000034\U000020E3'.encode('utf-8').decode('utf-8'),
@@ -22,16 +22,16 @@ class Card:
             'Seven':'\U00000037\U000020E3'.encode('utf-8').decode('utf-8'),
             'Eight':'\U00000038\U000020E3'.encode('utf-8').decode('utf-8'),
             'Nine':'\U00000039\U000020E3'.encode('utf-8').decode('utf-8'),
-            'Ten':'\U0001F51F\U000020E3'.encode('utf-8').decode('utf-8'),
-            'Page':'\U0001F1F5'.encode('utf-8').decode('utf-8'),
-            'Knight':'\U0001F1F0'.encode('utf-8').decode('utf-8'),
-            'Queen':'\U0001F451\U0001F1F6'.encode('utf-8').decode('utf-8'),
-            'King':'\U0001F451\U0001F1F0'.encode('utf-8').decode('utf-8'),
+            'Ten':'\U0001F51F'.encode('utf-8').decode('utf-8'),
+            'Page':'\U0001F1F5\U0000FE0F'.encode('utf-8').decode('utf-8'),
+            'Knight':'\U0001F1F0\U0000FE0F'.encode('utf-8').decode('utf-8'),
+            'Queen':'\U0001F1F6\U0001F451'.encode('utf-8').decode('utf-8'),
+            'King':'\U0001F1F0\U0001F451'.encode('utf-8').decode('utf-8'),
             'Reversed':'\U0001F504'.encode('utf-8').decode('utf-8'),
-            'Pentacles':'\U0001F4C0'.encode('utf-8').decode('utf-8'),
-            'Wands':'\U0001F962'.encode('utf-8').decode('utf-8'),
-            'Swords':'\U00002694'.encode('utf-8').decode('utf-8'),
-            'Cups':'\U0001F377'.encode('utf-8').decode('utf-8')
+            'Pentacles':'\U0001F1F5'.encode('utf-8').decode('utf-8'),
+            'Wands':'\U0001F1FC'.encode('utf-8').decode('utf-8'),
+            'Swords':'\U0001F1F8'.encode('utf-8').decode('utf-8'),
+            'Cups':'\U0001F1E8'.encode('utf-8').decode('utf-8')
         }
         self.emoji_card = self.emojify(self.card)
 
@@ -62,6 +62,7 @@ class Card:
         if emojified:
             return ''.join(replace)
         return ' '.join(replace)
+
 
 # db = TarotDB("diviner.db")
 # fool = Card(db,1,0,False)
