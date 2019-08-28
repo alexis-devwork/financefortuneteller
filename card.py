@@ -12,6 +12,7 @@ class Card:
         self.text = db.get_meaning(self.card_id,reversed)
         self.emo_dict = {'of':'',
             'of ':'of',
+            '':'',
             'Ace':'\U0001F1E6\U0000FE0F'.encode('utf-8').decode('utf-8'),
             'Two':'\U00000032\U000020E3'.encode('utf-8').decode('utf-8'),
             'Three':'\U00000033\U000020E3'.encode('utf-8').decode('utf-8'),
@@ -26,7 +27,7 @@ class Card:
             'Knight':'\U0001F1F0\U0000FE0F'.encode('utf-8').decode('utf-8'),
             'Queen':'\U0001F1F6\U0001F451'.encode('utf-8').decode('utf-8'),
             'King':'\U0001F1F0\U0001F451'.encode('utf-8').decode('utf-8'),
-            'Reversed ':'\U0001F504'.encode('utf-8').decode('utf-8'),
+            'Reversed':'\U0001F504'.encode('utf-8').decode('utf-8'),
             'Pentacles':'\U0001F1F5'.encode('utf-8').decode('utf-8'),
             'Wands':'\U0001F1FC'.encode('utf-8').decode('utf-8'),
             'Swords':'\U0001F1F8'.encode('utf-8').decode('utf-8'),
@@ -47,18 +48,25 @@ class Card:
         replace = []
         emojified = False
         for word in words:
-            if word in self.emo_dict:
-                if not emojified:
-                    if word == "of" or word == "The" or word=="Reversed":
-                        word = word + " "
-                    else:
-                        emojified = True
-                replace.append(self.emo_dict[word])
-            else:
-                replace.append(word)
+            emo, emojified = self.emojify_word(word,emojified)
+            if word == "Reversed":
+                replace[-1]=replace[-1]+emo
+                emo = ''
+            replace.append(emo)
         if emojified:
             return ''.join(replace)
         return ' '.join(replace)
+
+    def emojify_word(self,word,emojified):
+        if word in self.emo_dict:
+            if not emojified:
+                if word == "of" or word == "The":
+                    word = word + " "
+                elif word!="Reversed":
+                    emojified = True
+            return self.emo_dict[word], emojified
+        else:
+            return word, emojified
 
 
 # db = TarotDB("diviner.db")
