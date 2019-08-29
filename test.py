@@ -1,8 +1,8 @@
+import time
+from card import Card
+from reading import Reading
 from tarotdb import TarotDB
 from tweeter import Tweeter
-from reading import Reading
-from card import Card
-import time
 
 db = TarotDB("diviner.db")
 reading = Reading(db,"NYSE")
