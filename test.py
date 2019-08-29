@@ -19,12 +19,12 @@ ACCESS_SECRET = os.environ.get("ACCESS_SECRET")
 # tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
 # tw.tweet("test tweet")
 
-# db = TarotDB("diviner.db")
-# reading = Reading(db,"SPY")
-# tweet = reading.get_reading()
-# tw = Tweeter("credentials.txt")
-# tw.tweet(tweet)
-# db.close_con()
+db = TarotDB("diviner.db")
+reading = Reading(db,"SPY")
+tweet = reading.get_reading()
+tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
+tw.tweet(tweet)
+db.close_con()
 
 # faces = ['Ace',
 #     'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',

@@ -3,33 +3,16 @@ from card import Card
 from reading import Reading
 from tarotdb import TarotDB
 from tweeter import Tweeter
+from os import environ
+
+CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
+CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
+ACCESS_KEY = os.environ.get("ACCESS_KEY")
+ACCESS_SECRET = os.environ.get("ACCESS_SECRET")
 
 db = TarotDB("diviner.db")
-reading = Reading(db,"NYSE")
+reading = Reading(db,"SPY")
 tweet = reading.get_reading()
-tw = Tweeter("credentials.txt")
+tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
 tw.tweet(tweet)
 db.close_con()
-
-# faces = ['Ace',
-#     'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
-#     'Page','Knight','Queen','King'
-#     ]
-# suits = ['Swords','Cups','Wands','Pentacles']
-#
-#
-# tw = Tweeter("credentials.txt")
-# db = TarotDB("diviner.db")
-# fool = Card(db,1,0)
-# for suit in suits:
-#     strings = []
-#     for face in faces:
-#         strings.append(fool.emojify(face+" of "+suit))
-#     tweet = ', '.join(strings)
-#     posn = 0
-#     # tw.tweet(fool.emojify("Two of Pentacles"))
-#     while posn<len(tweet):
-#         tw.tweet(tweet[posn:posn+150])
-#         posn+=150
-#         time.sleep(5)
-# db.close_con()
