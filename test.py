@@ -19,34 +19,34 @@ ACCESS_SECRET = os.environ.get("ACCESS_SECRET")
 # tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
 # tw.tweet("test tweet")
 
-db = TarotDB("diviner.db")
-tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
-
-reading = Reading(db,"SPY")
-# tweet = reading.get_reading()
-# tw.tweet(tweet)
-
-
-faces = ['Ace',
-    'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
-    'Page','Knight','Queen','King'
-    ]
-suits = ['Swords','Cups','Wands','Pentacles']
-
-
-fool = Card(db,1,0)
-#tw.tweet(fool.card)
-for suit in suits:
-    strings = []
-    for face in faces:
-        strings.append(fool.emojify(face+" of "+suit))
-    tweet = ', '.join(strings)
-    posn = 0
-    # tw.tweet(fool.emojify("Two of Pentacles"))
-    while posn<len(tweet):
-        tw.tweet(tweet[posn:posn+150])
-        posn+=150
-        time.sleep(5)
-
-
-db.close_con()
+# db = TarotDB("diviner.db")
+# tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
+#
+# reading = Reading(db,"SPY")
+# # tweet = reading.get_reading()
+# # tw.tweet(tweet)
+#
+#
+# faces = ['Ace',
+#     'Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+#     'Page','Knight','Queen','King'
+#     ]
+# suits = ['Swords','Cups','Wands','Pentacles']
+#
+#
+# fool = Card(db,1,0)
+# #tw.tweet(fool.card)
+# for suit in suits:
+#     strings = []
+#     for face in faces:
+#         strings.append(fool.emojify(face+" of "+suit))
+#     tweet = ', '.join(strings)
+#     posn = 0
+#     # tw.tweet(fool.emojify("Two of Pentacles"))
+#     while posn<len(tweet):
+#         tw.tweet(tweet[posn:posn+150])
+#         posn+=150
+#         time.sleep(5)
+#
+#
+# db.close_con()
