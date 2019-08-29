@@ -14,5 +14,8 @@ class Querent:
                             self.losers[0]['symbol']
                         ]
 
+    def get_querents(self):
+        return self.querents
+
 # x = Querent()
 # print(x.querents)
