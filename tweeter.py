@@ -3,7 +3,7 @@ import tweepy
 class Tweeter:
 
     def __init__(self,credfile):
-        filename=open(credfile,'r')
+        filename = open(credfile,'r')
         f = filename.readlines()
         filename.close()
         self.CONSUMER_KEY = f[0].strip()

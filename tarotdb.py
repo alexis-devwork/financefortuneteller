@@ -4,8 +4,8 @@ class TarotDB:
 
     def __init__(self, db):
         self.db = db
-        self.con=sqlite3.connect(db)
-        self.cur=self.con.cursor()
+        self.con = sqlite3.connect(db)
+        self.cur = self.con.cursor()
 
     def get_card(self,card_id):
         self.cur.execute("SELECT card FROM cards WHERE ID=?",(card_id,))

@@ -5,7 +5,7 @@ from tarotdb import TarotDB
 from tweeter import Tweeter
 
 db = TarotDB("diviner.db")
-reading = Reading(db,"NYSE")
+reading = Reading(db,"SPY")
 tweet = reading.get_reading()
 tw = Tweeter("credentials.txt")
 tw.tweet(tweet)
