@@ -3,6 +3,7 @@ from card import Card
 from reading import Reading
 from tarotdb import TarotDB
 from tweeter import Tweeter
+import os
 from os import environ
 
 CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
