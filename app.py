@@ -1,5 +1,6 @@
 import time
 from card import Card
+from querent import Querent
 from reading import Reading
 from tarotdb import TarotDB
 from tweeter import Tweeter
@@ -12,8 +13,9 @@ ACCESS_KEY = os.environ.get('ACCESS_KEY')
 ACCESS_SECRET = os.environ.get('ACCESS_SECRET')
 
 db = TarotDB("diviner.db")
-reading = Reading(db,"SPY")
-tweet = reading.get_reading()
 tw = Tweeter(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
-tw.tweet(tweet)
-db.close_con()
+querents = Querent()
+for q in querents.get_querents():
+    reading = Reading(db,q)
+    tweet = reading.get_reading()
+    tw.tweet(tweet)
