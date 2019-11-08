@@ -1,4 +1,4 @@
-A bot that does tarot card readings for financial markets.
+A bot that does tarot card readings for financial markets. Just for fun.
 
 https://twitter.com/DivinerBot
 
